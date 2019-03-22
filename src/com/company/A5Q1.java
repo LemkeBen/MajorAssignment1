@@ -4,10 +4,15 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-import static java.lang.Math.abs;
+import static java.lang.Math.min;
+/*
+Ben Lemke
+file name
+description
+date
+ */
 
-
-public class A4Q1 {
+public class A5Q1 {
     public static void main(String[] args) throws IOException {
         // setup inputs
         InputStreamReader reader = new InputStreamReader (System.in);
@@ -16,48 +21,39 @@ public class A4Q1 {
         // loop until the user doesn't want to do more
         while (another){
             // get the numerators and denominators
-            System.out.println("numerator1");
+            System.out.println("numerator");
             int n1 = Integer.parseInt(br.readLine());
-            System.out.println("denominator1");
-            int n2 = Integer.parseInt(br.readLine());
-            System.out.println("numerator2");
+            System.out.println("denominator");
             int d1 = Integer.parseInt(br.readLine());
-            System.out.println("denominator2");
-            int d2 = Integer.parseInt(br.readLine());
             //create the factions and do the operations
             FancyFraction f1 = new FancyFraction(n1,d1);
-            FancyFraction f2 = new FancyFraction(n2,d2);
-            f1 = f1.timesTwo();
-            f2 = f2.invert();
-            f1 = f1.product(f2);
-            f2 = f1.PlusEquals(f2);
-            f1 = f1.absolute();
+            f1.PlusEquals(new FancyFraction(6,7));
+            f1 = f1.Plus(new FancyFraction(3,5));
+            f1.Reduce();
             // print the fractions
             System.out.println(f1.getString());
-            System.out.println(f2.getString());
             // ask the user whether or not to continue
             another = (!br.readLine().equals("quit"));
         }
     }
 }
 // class for fractions
-class Fraction{
+class FancyFraction {
     //fractions have numerators and denominators
-    public int numerator;
-    public int denominator;
+    private int numerator;
+    private int denominator;
+
     //fraction constructor setting the numerator and the denominator
-    public Fraction(int n, int d){
+    public FancyFraction(int n, int d){
         numerator = n;
         denominator = d;
     }
-    // return the current fraction times two
-    public FancyFraction timesTwo(){
-        return new FancyFraction(this.numerator * 2, this.denominator);
-    }
+
     // returns a string of the current fraction in # / # form
     public String getString(){
         return String.valueOf(numerator) + " / " + String.valueOf(denominator);
     }
+
     //return a fraction that has the absolute value o the current fraction
     public FancyFraction absolute(){
         int absNumerator;
@@ -76,17 +72,28 @@ class Fraction{
         }
         return new FancyFraction(absNumerator,absDenominator);
     }
-    //return a fraction that is the reciprocal of the current fraction
-    public FancyFraction invert(){
-        return new FancyFraction(this.denominator, this.numerator);
-    }
-    //return a fraction that is the PlusEquals of the current fraction and an input
 
-    public FancyFraction sum(FancyFraction fraction){
+    //return a fraction that is the PlusEquals of the current fraction and an input
+    public FancyFraction Plus(FancyFraction fraction){
         return new FancyFraction(this.numerator + fraction.numerator, this.denominator + fraction.denominator);
     }
-    //return a fraction that is the product of the current fraction and an input
-    public FancyFraction product(FancyFraction fraction){
-        return new FancyFraction(this.numerator * fraction.numerator, this.denominator * fraction.denominator);
+    //add a fraction to current fraction
+    public void PlusEquals(FancyFraction fraction){
+        numerator = numerator * fraction.denominator + fraction.numerator * denominator;
+        denominator = denominator * fraction.denominator + fraction.denominator * numerator;
+    }
+    // convert fraction to lowest terms
+    public void Reduce(){
+        if (numerator == 1 || denominator == 1){
+            return;
+        }
+        for (int i = 2; i < min(numerator, denominator); i++){
+            if ((numerator % i)== 0 && denominator % i == 0){
+                numerator/= i;
+                denominator/= i;
+                Reduce();
+            }
+        }
+        return;
     }
 }
