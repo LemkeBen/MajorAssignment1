@@ -7,9 +7,9 @@ import java.io.InputStreamReader;
 import static java.lang.Math.min;
 /*
 Ben Lemke
-file name
-description
-date
+Fancy Fractions
+Implements a FancyFractionclass to manipulate fractions
+22/03/2019
  */
 
 public class A5Q1 {
