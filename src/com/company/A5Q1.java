@@ -84,16 +84,20 @@ class FancyFraction {
     }
     // convert fraction to lowest terms
     public void Reduce(){
+        // if either numerator or denominator in 1 fraction is not reducable
         if (numerator == 1 || denominator == 1){
             return;
         }
+        // loop through integers less than numerator and denominator to look for common factors
         for (int i = 2; i < min(numerator, denominator); i++){
+            // If an integer is a factor of both devide both by that factor and reduce the result
             if ((numerator % i)== 0 && denominator % i == 0){
                 numerator/= i;
                 denominator/= i;
                 Reduce();
             }
         }
+        // if there are no common factors, return
         return;
     }
 }
