@@ -40,9 +40,13 @@ public class A5Q2 {
             FancyComplex z2 = new FancyComplex(a2, b2);
             FancyComplex z3 = new FancyComplex(a3, b3);
 
-            // add them and print them
-            z1 = new FancyComplex((z1.real + z2.real), (z1.imaginary + z2.imaginary));
-            System.out.println(z1.real + " " + z1.imaginary + "i");
+            // call methods and print values
+            double size = z1.modulus();
+            System.out.println(size);
+            z2.scale(5);
+            System.out.println(z2.toString());
+            System.out.println(z1.plus(z3).toString());
+            System.out.println(z1.times(z3).toString());
 
             // ask user whether or not to do it again
             another = (!br.readLine().equals("quit"));
@@ -58,7 +62,20 @@ class FancyComplex{
         real = a;
         imaginary = b;
     }
+    public String toString(){
+        return (real + "+ i" + imaginary);
+    }
     public double modulus(){
-        return (Math.pow((Math.pow(real, 2) + Math.pow(imaginary, 2)),1/2));
+        return (Math.sqrt(Math.pow(real, 2) + Math.pow(imaginary, 2)));
+    }
+    public void scale(double x){
+        real*= x;
+        imaginary*= x;
+    }
+    public FancyComplex plus(FancyComplex other){
+        return new FancyComplex(this.real + other.real, this.imaginary + other.imaginary);
+    }
+    public FancyComplex times(FancyComplex other){
+        return new FancyComplex(this.real * other.real, this.imaginary * other.imaginary);
     }
 }
