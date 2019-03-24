@@ -57,24 +57,31 @@ public class A5Q2 {
 class FancyComplex{
     double real;
     double imaginary;
+
     // constructor method
     FancyComplex(double a, double b){
         real = a;
         imaginary = b;
     }
+
+    // Convert complex number to a sting that can be printed
     public String toString(){
         return (real + "+ i" + imaginary);
     }
+    // return the moduus of the complex number
     public double modulus(){
         return (Math.sqrt(Math.pow(real, 2) + Math.pow(imaginary, 2)));
     }
+    // Scale up both elements of the complex number by the parameter x
     public void scale(double x){
         real*= x;
         imaginary*= x;
     }
+    // Return a complex number that is the sum of this one and a parameter
     public FancyComplex plus(FancyComplex other){
         return new FancyComplex(this.real + other.real, this.imaginary + other.imaginary);
     }
+    // Return a complex number that is the product of this one and a parameter
     public FancyComplex times(FancyComplex other){
         return new FancyComplex(this.real * other.real, this.imaginary * other.imaginary);
     }
