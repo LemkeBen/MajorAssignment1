@@ -4,6 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/*
+Ben Lemke
+Child Catalogue
+Implements a class for cataloguing children and compare arrays of objects to parallel arrays
+25/04/2019
+ */
+
 public class A8Q2 {
     public static void main(String[] args) throws IOException {
         // setup inputs
@@ -70,21 +77,24 @@ public class A8Q2 {
                 sex3 = br.readLine();
             }
 
-            //create the instances of the class and do the operations to them
+            // create the instances of the class
             FancyChild[] children = new FancyChild[3];
             children[0] = new FancyChild(name1,age1,height1,sex1);
             children[1] = new FancyChild(name2,age2,height2,sex2);
             children[2] = new FancyChild(name3,age3,height3,sex3);
 
+            // loop through the instances and use their print functions
             for (int i = 0; i < 3; i++){
                 children[i].printString();
             }
 
+            // create parallel arrays to represent the children
             String [] names = {name1, name2, name3};
             double [] ages = {age1,age2, age3};
             double [] heights = {height1,height2,height3};
             String [] sexes = {sex1, sex2, sex3};
 
+            // ouput the values in the same way as the classes method
             for (int i = 0; i< 3; i++){
                 System.out.println("name: " + names[i]);
                 System.out.println("age: " + ages[i] + " height: " + heights[i] + " sex: " + sexes[i]);
@@ -96,19 +106,22 @@ public class A8Q2 {
         }
     }
 }
+
+// Class for a child
 class FancyChild{
     String name;
     double age;
     double height;
     String sex;
 
-
+    // Constructor Method
     FancyChild(String childName, double childAgeYrs, double childHeightCM, String childSex){
         name = childName;
         age = childAgeYrs;
         height = childHeightCM;
         sex = childSex;
     }
+    // Printing Method
     public void printString(){
         System.out.println("name: " + name);
         System.out.println("age: " + age + " height: " + height + " sex: " + sex);
