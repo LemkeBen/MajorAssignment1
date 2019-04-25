@@ -80,7 +80,18 @@ public class A8Q2 {
                 children[i].printString();
             }
 
+            String [] names = {name1, name2, name3};
+            double [] ages = {age1,age2, age3};
+            double [] heights = {height1,height2,height3};
+            String [] sexes = {sex1, sex2, sex3};
+
+            for (int i = 0; i< 3; i++){
+                System.out.println("name: " + names[i]);
+                System.out.println("age: " + ages[i] + " height: " + heights[i] + " sex: " + sexes[i]);
+            }
+
             // ask user whether or not to do it again
+            System.out.println("Do it again?");
             another = (!br.readLine().equals("quit"));
         }
     }
