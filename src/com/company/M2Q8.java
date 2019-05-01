@@ -159,7 +159,7 @@ class Rectangle{
     }
 
     // return the perimeter of the outside of two rectangles
-    public static int totalPerimeter(Rectangle r1, Rectangle r2){{
+    public static int totalPerimeter(Rectangle r1, Rectangle r2){
         if (contains(r1,r2)){
             return r1.perimeter();
         }
@@ -169,7 +169,5 @@ class Rectangle{
         else{
             return r1.perimeter() + r2.perimeter() - intersectingRectangle(r1,r2).perimeter();
         }
-    }
-
     }
 }
