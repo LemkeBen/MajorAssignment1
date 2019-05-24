@@ -2,6 +2,13 @@ package com.company;
 
 import java.io.*;
 
+/*
+Ben Lemke
+Human documentation
+writes and reads information about people
+21/05/2019
+ */
+
 public class A10Q1and2 {
     public static void main(String[] args) throws IOException {
         // setup inputs and outputs
