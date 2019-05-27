@@ -10,7 +10,6 @@ Students and college students
 Uses inheritance to manage infromation on students including college students
 23/05/2019
  */
-
 public class M4 {
     public static void main(String[] args) throws IOException {
         // Request info for, create, and print the data of a normal student

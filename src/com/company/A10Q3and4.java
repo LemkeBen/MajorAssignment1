@@ -56,6 +56,7 @@ public class A10Q3and4 {
 
         br.close();
 
+        // Create arrays to store averages
         double[] overallAverages = new double[5];
         double[] assignmetnAverages = new double[4];
 
@@ -81,11 +82,13 @@ public class A10Q3and4 {
             System.out.print("------------------- ");
             System.out.println("------------------- ");
             System.out.print(format(names[s]));
+            // Output student's marks
             for (int i = 0; i < 4; i++){
                 System.out.print(format(String.valueOf(marks[s][i])));
             }
             System.out.println(overallAverages[s]);
             System.out.print(format("Test averages"));
+            // Output assignment averages
             for (int i = 0; i < 4; i++){
                 System.out.print(format(String.valueOf(assignmetnAverages[i])));
             }
